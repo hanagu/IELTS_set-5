@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Flashcards Set 5 (401-500)</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Load Inter Font & Noto Sans KR */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
+
+        /* 3D Flip Effect Styles */
+        .card-container {
+            perspective: 1000px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        .card-container.is-flipped .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            padding: 2rem;
+        }
+
+        .card-front {
+            background-color: white;
+            color: #1F2937; /* gray-800 */
+            border: 2px solid #E5E7EB;
+        }
+
+        .card-back {
+            background-color: #BE123C; /* Rose-700 (Set 5 Theme) */
+            color: white;
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col justify-center items-center p-4">
+
+    <div class="w-full max-w-lg mx-auto">
+        <h1 class="text-2xl md:text-3xl font-bold text-center text-slate-800 mb-6">
+            Essential Vocabulary Set 5
+            <span class="block text-sm font-normal text-slate-500 mt-1">Words 401-500 (Final)</span>
+        </h1>
+
+        <!-- Flashcard Container -->
+        <div id="flashcard-container" class="card-container w-full h-96 rounded-3xl cursor-pointer">
+            <div id="flashcard-inner" class="card-inner w-full h-full">
+                
+                <!-- Card Front: English Word + IPA -->
+                <div class="card-front">
+                    <div class="text-center">
+                        <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">English Word</p>
+                        <!-- Word -->
+                        <h2 id="front-word" class="text-4xl md:text-5xl font-extrabold text-slate-800 break-words mb-2">
+                            Resolve
+                        </h2>
+                        <!-- Pronunciation (IPA) -->
+                        <p id="front-ipa" class="text-xl text-slate-500 font-serif italic">
+                            /rɪˈzɒlv/
+                        </p>
+                        <p class="text-gray-400 mt-8 text-sm animate-pulse">
+                            (Tap to flip)
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card Back: Meaning + Sentence + Translation -->
+                <div class="card-back">
+                    <div class="text-center w-full h-full flex flex-col justify-center items-center space-y-4">
+                        
+                        <!-- Korean Meaning -->
+                        <div class="w-full border-b border-rose-400 pb-4 mb-2">
+                            <h3 id="back-meaning" class="text-2xl md:text-3xl font-bold text-white">
+                                해결하다, 결심하다
+                            </h3>
+                        </div>
+
+                        <!-- English Sentence -->
+                        <div class="w-full px-2">
+                            <p id="back-sentence" class="text-lg md:text-xl font-medium text-rose-100 italic">
+                                We must resolve this issue immediately.
+                            </p>
+                        </div>
+
+                        <!-- Korean Translation -->
+                        <div class="w-full px-2">
+                            <p id="back-translation" class="text-sm text-rose-200">
+                                우리는 이 문제를 즉시 해결해야 한다.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card Counter -->
+        <div id="card-counter" class="text-center text-slate-500 mt-6 text-lg font-medium">
+            Card 1 / 100
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="flex justify-between mt-6 space-x-4 w-full">
+            <button id="prev-btn" class="flex-1 bg-white hover:bg-slate-50 text-slate-800 font-bold py-3 px-6 rounded-xl shadow-sm border border-slate-200 transition-colors duration-200">
+                &larr; Previous
+            </button>
+            <button id="next-btn" class="flex-1 bg-rose-600 hover:bg-rose-700 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors duration-200">
+                Next &rarr;
+            </button>
+        </div>
+
+        <!-- Shuffle Button -->
+        <div class="mt-4 w-full">
+            <button id="shuffle-btn" class="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3 px-6 rounded-xl shadow-md transition-colors duration-200 flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Shuffle Cards
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Vocabulary Set 5: Words 401-500
+        const vocabulary = [
+            { word: "Resolve", ipa: "/rɪˈzɒlv/", meaning: "해결하다, 결심하다", sentence: "We must resolve this issue immediately.", translation: "우리는 이 문제를 즉시 해결해야 한다." },
+            { word: "Resource", ipa: "/rɪˈzɔːs/", meaning: "자원, 재료", sentence: "Water is a valuable natural resource.", translation: "물은 귀중한 천연 자원이다." },
+            { word: "Respond", ipa: "/rɪˈspɒnd/", meaning: "대답하다, 반응하다", sentence: "She did not respond to my email.", translation: "그녀는 내 이메일에 답장하지 않았다." },
+            { word: "Restore", ipa: "/rɪˈstɔː/", meaning: "복구하다, 회복시키다", sentence: "The building was restored to its original state.", translation: "그 건물은 원래 상태로 복구되었다." },
+            { word: "Restrict", ipa: "/rɪˈstrɪkt/", meaning: "제한하다, 한정하다", sentence: "Access is restricted to authorized personnel.", translation: "출입은 허가된 인원으로 제한된다." },
+            { word: "Retain", ipa: "/rɪˈteɪn/", meaning: "유지하다, 보유하다", sentence: "The company needs to retain its best employees.", translation: "회사는 최고의 직원들을 유지해야 한다." },
+            { word: "Reveal", ipa: "/rɪˈviːl/", meaning: "드러내다, 밝히다", sentence: "The test revealed a serious problem.", translation: "테스트 결과 심각한 문제가 드러났다." },
+            { word: "Revenue", ipa: "/ˈrɛvənjuː/", meaning: "수익, 세입", sentence: "The company's revenue has increased.", translation: "회사의 수익이 증가했다." },
+            { word: "Reverse", ipa: "/rɪˈvɜːs/", meaning: "뒤집다, 반대", sentence: "Can you reverse the car?", translation: "차를 후진시킬 수 있나요?" },
+            { word: "Revise", ipa: "/rɪˈvaɪz/", meaning: "수정하다, 복습하다", sentence: "I need to revise for the exam.", translation: "나는 시험 공부를 해야 한다." },
+            { word: "Revolution", ipa: "/ˌrɛvəˈluːʃᵊn/", meaning: "혁명, 회전", sentence: "The industrial revolution changed the world.", translation: "산업 혁명은 세상을 바꾸었다." },
+            { word: "Route", ipa: "/ruːt/", meaning: "경로, 노선", sentence: "Which is the best route to the airport?", translation: "공항으로 가는 가장 좋은 경로는 어디입니까?" },
+            { word: "Schedule", ipa: "/ˈʃɛdjuːl/", meaning: "일정, 스케줄", sentence: "Let's check the schedule.", translation: "일정을 확인해 봅시다." },
+            { word: "Section", ipa: "/ˈsɛkʃᵊn/", meaning: "구역, 부분", sentence: "This section of the road is closed.", translation: "도로의 이 구역은 폐쇄되었습니다." },
+            { word: "Sector", ipa: "/ˈsɛktə/", meaning: "부문, 분야", sentence: "He works in the private sector.", translation: "그는 민간 부문에서 일한다." },
+            { word: "Secure", ipa: "/sɪˈkjʊə/", meaning: "안전한, 확보하다", sentence: "Please ensure the door is secure.", translation: "문이 안전하게 잠겼는지 확인하세요." },
+            { word: "Seek", ipa: "/siːk/", meaning: "찾다, 구하다", sentence: "They are seeking shelter from the rain.", translation: "그들은 비를 피할 곳을 찾고 있다." },
+            { word: "Select", ipa: "/sɪˈlɛkt/", meaning: "선택하다, 엄선된", sentence: "Please select one option.", translation: "하나의 옵션을 선택해 주세요." },
+            { word: "Sequence", ipa: "/ˈsiːkwəns/", meaning: "순서, 연속", sentence: "The numbers are in a sequence.", translation: "숫자들은 순서대로 있다." },
+            { word: "Series", ipa: "/ˈsɪəriːz/", meaning: "일련, 연속", sentence: "She watched a TV series.", translation: "그녀는 TV 시리즈를 보았다." },
+            { word: "Shift", ipa: "/ʃɪft/", meaning: "옮기다, 변화, 교대", sentence: "There was a shift in public opinion.", translation: "여론에 변화가 있었다." },
+            { word: "Significant", ipa: "/sɪɡˈnɪfɪkənt/", meaning: "중요한, 상당한", sentence: "This is a significant discovery.", translation: "이것은 중요한 발견이다." },
+            { word: "Similar", ipa: "/ˈsɪmɪlə/", meaning: "비슷한, 유사한", sentence: "We have similar tastes in music.", translation: "우리는 음악 취향이 비슷하다." },
+            { word: "Simulate", ipa: "/ˈsɪmjʊleɪt/", meaning: "모의 실험하다, 흉내내다", sentence: "The computer simulates real-life situations.", translation: "컴퓨터는 실제 상황을 시뮬레이션한다." },
+            { word: "Site", ipa: "/saɪt/", meaning: "장소, 현장", sentence: "This is the site of the new hospital.", translation: "이곳은 새 병원이 들어설 부지이다." },
+            { word: "Sole", ipa: "/səʊl/", meaning: "유일한, 단독의", sentence: "He is the sole survivor of the crash.", translation: "그는 그 추락 사고의 유일한 생존자이다." },
+            { word: "Solution", ipa: "/səˈluːʃᵊn/", meaning: "해결책, 용액", sentence: "We need to find a solution to this problem.", translation: "우리는 이 문제에 대한 해결책을 찾아야 한다." },
+            { word: "Somewhat", ipa: "/ˈsʌmwɒt/", meaning: "다소, 약간", sentence: "I was somewhat surprised.", translation: "나는 다소 놀랐다." },
+            { word: "Source", ipa: "/sɔːs/", meaning: "원천, 출처", sentence: "Light is the source of energy for plants.", translation: "빛은 식물의 에너지원이다." },
+            { word: "Specific", ipa: "/spəˈsɪfɪk/", meaning: "구체적인, 특정한", sentence: "Can you be more specific?", translation: "좀 더 구체적으로 말해줄 수 있나요?" },
+            { word: "Speculate", ipa: "/ˈspɛkjʊleɪt/", meaning: "추측하다, 투기하다", sentence: "We can only speculate about the future.", translation: "우리는 미래에 대해 추측만 할 수 있을 뿐이다." },
+            { word: "Sphere", ipa: "/sfɪə/", meaning: "구, 영역", sentence: "The earth is a sphere.", translation: "지구는 구체이다." },
+            { word: "Stable", ipa: "/ˈsteɪbᵊl/", meaning: "안정적인, 마구간", sentence: "His condition is stable.", translation: "그의 상태는 안정적이다." },
+            { word: "Statistic", ipa: "/stəˈtɪstɪk/", meaning: "통계", sentence: "This statistic is misleading.", translation: "이 통계는 오해의 소지가 있다." },
+            { word: "Status", ipa: "/ˈsteɪtəs/", meaning: "지위, 상태", sentence: "What is the status of your application?", translation: "신청 상태는 어떻습니까?" },
+            { word: "Strategy", ipa: "/ˈstrætɪdʒi/", meaning: "전략", sentence: "We need a marketing strategy.", translation: "우리는 마케팅 전략이 필요하다." },
+            { word: "Stress", ipa: "/strɛs/", meaning: "스트레스, 강조하다", sentence: "He is under a lot of stress.", translation: "그는 많은 스트레스를 받고 있다." },
+            { word: "Structure", ipa: "/ˈstrʌktʃə/", meaning: "구조, 조직하다", sentence: "The structure of the building is sound.", translation: "그 건물의 구조는 튼튼하다." },
+            { word: "Style", ipa: "/staɪl/", meaning: "스타일, 방식", sentence: "I like her style of writing.", translation: "나는 그녀의 글쓰기 스타일을 좋아한다." },
+            { word: "Submit", ipa: "/səbˈmɪt/", meaning: "제출하다, 복종하다", sentence: "Please submit your report by Friday.", translation: "금요일까지 보고서를 제출해 주세요." },
+            { word: "Subsequent", ipa: "/ˈsʌbsɪkwənt/", meaning: "그 다음의, 차후의", sentence: "Subsequent events proved him right.", translation: "그 다음 사건들이 그가 옳았음을 증명했다." },
+            { word: "Subsidy", ipa: "/ˈsʌbsɪdi/", meaning: "보조금", sentence: "The government provides a subsidy for farmers.", translation: "정부는 농부들에게 보조금을 제공한다." },
+            { word: "Substitute", ipa: "/ˈsʌbstɪtjuːt/", meaning: "대체하다, 대리인", sentence: "You can substitute honey for sugar.", translation: "설탕 대신 꿀을 쓸 수 있다." },
+            { word: "Success", ipa: "/səkˈsɛs/", meaning: "성공", sentence: "Hard work is the key to success.", translation: "노력은 성공의 열쇠이다." },
+            { word: "Sufficient", ipa: "/səˈfɪʃənt/", meaning: "충분한", sentence: "We have sufficient food for everyone.", translation: "우리는 모두를 위한 충분한 음식을 가지고 있다." },
+            { word: "Sum", ipa: "/sʌm/", meaning: "합계, 액수", sentence: "The sum of 2 and 3 is 5.", translation: "2와 3의 합은 5이다." },
+            { word: "Summary", ipa: "/ˈsʌməri/", meaning: "요약", sentence: "Please write a brief summary.", translation: "간단한 요약을 써주세요." },
+            { word: "Supervise", ipa: "/ˈsuːpəvaɪz/", meaning: "감독하다, 관리하다", sentence: "She supervises a team of ten people.", translation: "그녀는 10명의 팀을 감독한다." },
+            { word: "Supplement", ipa: "/ˈsʌplɪmənt/", meaning: "보충하다, 부록", sentence: "He takes vitamin supplements.", translation: "그는 비타민 보충제를 복용한다." },
+            { word: "Survey", ipa: "/ˈsɜːveɪ/", meaning: "설문조사, 조사하다", sentence: "They conducted a survey of customer opinions.", translation: "그들은 고객 의견에 대한 설문조사를 실시했다." },
+            { word: "Sustain", ipa: "/səˈsteɪn/", meaning: "유지하다, 지탱하다", sentence: "Hope sustains us in difficult times.", translation: "희망은 어려운 시기에 우리를 지탱해 준다." },
+            { word: "Symbol", ipa: "/ˈsɪmbəl/", meaning: "상징, 기호", sentence: "The dove is a symbol of peace.", translation: "비둘기는 평화의 상징이다." },
+            { word: "Target", ipa: "/ˈtɑːɡɪt/", meaning: "목표, 대상", sentence: "Our target is to increase sales.", translation: "우리의 목표는 매출을 늘리는 것이다." },
+            { word: "Task", ipa: "/tɑːsk/", meaning: "과업, 업무", sentence: "Completing this task will take time.", translation: "이 과업을 완료하는 데는 시간이 걸릴 것이다." },
+            { word: "Technical", ipa: "/ˈtɛknɪkᵊl/", meaning: "기술적인", sentence: "We are facing technical difficulties.", translation: "우리는 기술적인 어려움에 직면해 있다." },
+            { word: "Technique", ipa: "/tɛkˈniːk/", meaning: "기법, 기술", sentence: "She learned a new painting technique.", translation: "그녀는 새로운 페인팅 기법을 배웠다." },
+            { word: "Temporary", ipa: "/ˈtɛmpərəri/", meaning: "일시적인, 임시의", sentence: "This represents a temporary solution.", translation: "이것은 일시적인 해결책을 나타낸다." },
+            { word: "Tense", ipa: "/tɛns/", meaning: "긴장한, 시제", sentence: "He looked tired and tense.", translation: "그는 피곤하고 긴장해 보였다." },
+            { word: "Text", ipa: "/tɛkst/", meaning: "본문, 문자 메시지", sentence: "Read the text carefully.", translation: "본문을 주의 깊게 읽으세요." },
+            { word: "Theme", ipa: "/θiːm/", meaning: "주제, 테마", sentence: "The theme of the party is the 80s.", translation: "파티의 테마는 80년대이다." },
+            { word: "Theoretical", ipa: "/ˌθɪəˈrɛtɪkᵊl/", meaning: "이론적인", sentence: "The course is purely theoretical.", translation: "그 과정은 순전히 이론적이다." },
+            { word: "Theory", ipa: "/ˈθɪəri/", meaning: "이론, 학설", sentence: "Darwin's theory of evolution is famous.", translation: "다윈의 진화론은 유명하다." },
+            { word: "Thereby", ipa: "/ˌðeəˈbaɪ/", meaning: "그렇게 함으로써", sentence: "He signed the contract, thereby accepting the terms.", translation: "그는 계약서에 서명함으로써 조건을 받아들였다." },
+            { word: "Thesis", ipa: "/ˈθiːsɪs/", meaning: "논문, 주제", sentence: "She is writing her master's thesis.", translation: "그녀는 석사 논문을 쓰고 있다." },
+            { word: "Topic", ipa: "/ˈtɒpɪk/", meaning: "주제, 화제", sentence: "The topic of conversation changed.", translation: "대화 주제가 바뀌었다." },
+            { word: "Trace", ipa: "/treɪs/", meaning: "추적하다, 자취", sentence: "Police traced the call.", translation: "경찰은 통화를 추적했다." },
+            { word: "Tradition", ipa: "/trəˈdɪʃᵊn/", meaning: "전통", sentence: "It is a family tradition to eat together on Sundays.", translation: "일요일에 함께 식사하는 것은 가족 전통이다." },
+            { word: "Transfer", ipa: "/trænsˈfɜː/", meaning: "이동하다, 환승하다", sentence: "He transferred to a different school.", translation: "그는 다른 학교로 전학 갔다." },
+            { word: "Transform", ipa: "/trænsˈfɔːm/", meaning: "변형시키다, 바꾸다", sentence: "The caterpillar transformed into a butterfly.", translation: "애벌레가 나비로 변했다." },
+            { word: "Transit", ipa: "/ˈtrænsɪt/", meaning: "수송, 환승", sentence: "The goods were damaged in transit.", translation: "물품이 운송 도중 파손되었다." },
+            { word: "Trend", ipa: "/trɛnd/", meaning: "추세, 경향", sentence: "There is a growing trend towards healthy eating.", translation: "건강한 식습관을 지향하는 추세가 늘고 있다." },
+            { word: "Ultimate", ipa: "/ˈʌltɪmɪt/", meaning: "궁극적인, 최후의", sentence: "His ultimate goal is to become a pilot.", translation: "그의 궁극적인 목표는 조종사가 되는 것이다." },
+            { word: "Undergo", ipa: "/ˌʌndəˈɡəʊ/", meaning: "겪다, 경험하다", sentence: "The company is undergoing major changes.", translation: "그 회사는 큰 변화를 겪고 있다." },
+            { word: "Understand", ipa: "/ˌʌndəˈstænd/", meaning: "이해하다", sentence: "Do you understand the instructions?", translation: "지시 사항을 이해합니까?" },
+            { word: "Undertake", ipa: "/ˌʌndəˈteɪk/", meaning: "착수하다, 약속하다", sentence: "She undertook the responsibility.", translation: "그녀는 그 책임을 맡았다." },
+            { word: "Uniform", ipa: "/ˈjuːnɪfɔːm/", meaning: "유니폼, 균일한", sentence: "Students must wear a school uniform.", translation: "학생들은 교복을 입어야 한다." },
+            { word: "Unique", ipa: "/juːˈniːk/", meaning: "독특한, 유일한", sentence: "Each snowflake is unique.", translation: "각 눈송이는 독특하다." },
+            { word: "Utilise", ipa: "/ˈjuːtɪlaɪz/", meaning: "활용하다, 이용하다", sentence: "We must utilise our resources efficiently.", translation: "우리는 자원을 효율적으로 활용해야 한다." },
+            { word: "Valid", ipa: "/ˈvælɪd/", meaning: "유효한, 타당한", sentence: "Your passport is no longer valid.", translation: "당신의 여권은 더 이상 유효하지 않다." },
+            { word: "Value", ipa: "/ˈvæljuː/", meaning: "가치, 소중히 여기다", sentence: "I value your friendship.", translation: "나는 너의 우정을 소중히 여긴다." },
+            { word: "Variable", ipa: "/ˈveərɪəbᵊl/", meaning: "변수, 변하기 쉬운", sentence: "The weather is variable today.", translation: "오늘 날씨는 변덕스럽다." },
+            { word: "Vary", ipa: "/ˈveəri/", meaning: "다르다, 다양하다", sentence: "Opinions vary on this subject.", translation: "이 주제에 대한 의견은 다양하다." },
+            { word: "Vehicle", ipa: "/ˈviːɪkᵊl/", meaning: "차량, 수단", sentence: "A car is a type of vehicle.", translation: "자동차는 차량의 한 종류이다." },
+            { word: "Version", ipa: "/ˈvɜːʃᵊn/", meaning: "버전, 판", sentence: "This is the latest version of the software.", translation: "이것은 소프트웨어의 최신 버전이다." },
+            { word: "Via", ipa: "/ˈvaɪə/", meaning: "~을 경유하여, ~을 통하여", sentence: "We flew to London via Paris.", translation: "우리는 파리를 경유해 런던으로 날아갔다." },
+            { word: "Visible", ipa: "/ˈvɪzɪbᵊl/", meaning: "보이는, 가시적인", sentence: "The stars are visible tonight.", translation: "오늘 밤은 별이 보인다." },
+            { word: "Vision", ipa: "/ˈvɪʒᵊn/", meaning: "시력, 비전", sentence: "She has excellent vision.", translation: "그녀는 시력이 좋다." },
+            { word: "Voluntary", ipa: "/ˈvɒləntəri/", meaning: "자발적인", sentence: "Attendance is voluntary.", translation: "참석은 자발적이다." },
+            { word: "Welfare", ipa: "/ˈwɛlfeə/", meaning: "복지, 안녕", sentence: "The state is responsible for the welfare of its citizens.", translation: "국가는 국민의 복지에 책임이 있다." },
+            { word: "Whereas", ipa: "/weərˈæz/", meaning: "반면에", sentence: "He likes football, whereas I prefer tennis.", translation: "그는 축구를 좋아하지만, 반면에 나는 테니스를 선호한다." },
+            { word: "Widespread", ipa: "/ˈwaɪdsprɛd/", meaning: "광범위한, 널리 퍼진", sentence: "There is widespread support for the proposal.", translation: "그 제안에 대한 광범위한 지지가 있다." },
+            { word: "Whilst", ipa: "/waɪlst/", meaning: "~하는 동안, 반면에 (while)", sentence: "Listen whilst I explain.", translation: "내가 설명하는 동안 들어라." },
+            { word: "Whole", ipa: "/həʊl/", meaning: "전체의, 모든", sentence: "I spent the whole day cleaning.", translation: "나는 하루 종일 청소하며 보냈다." },
+            { word: "Willing", ipa: "/ˈwɪlɪŋ/", meaning: "기꺼이 하는", sentence: "Are you willing to help?", translation: "기꺼이 도와주시겠습니까?" },
+            { word: "Yield", ipa: "/jiːld/", meaning: "산출하다, 양보하다", sentence: "The investment yielded a high profit.", translation: "그 투자는 높은 수익을 냈다." }
+        ];
+
+        let currentCardIndex = 0;
+        let shuffledVocabulary = [...vocabulary]; // Clone the original array
+
+        // Get DOM elements
+        const cardContainer = document.getElementById('flashcard-container');
+        const frontWordEl = document.getElementById('front-word');
+        const frontIpaEl = document.getElementById('front-ipa'); // New IPA Element
+        const backMeaningEl = document.getElementById('back-meaning');
+        const backSentenceEl = document.getElementById('back-sentence');
+        const backTranslationEl = document.getElementById('back-translation');
+        const cardCounterEl = document.getElementById('card-counter');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const shuffleBtn = document.getElementById('shuffle-btn');
+
+        // Function to load card content
+        function loadCard(index) {
+            if (index < 0 || index >= shuffledVocabulary.length) return;
+
+            currentCardIndex = index;
+            const cardData = shuffledVocabulary[index];
+
+            // Update Card Front
+            frontWordEl.textContent = cardData.word;
+            frontIpaEl.textContent = cardData.ipa; // Set IPA
+
+            // Update Card Back
+            backMeaningEl.textContent = cardData.meaning;
+            backSentenceEl.textContent = cardData.sentence;
+            backTranslationEl.textContent = cardData.translation;
+
+            // Update counter 
+            cardCounterEl.textContent = `Card ${index + 1} / ${shuffledVocabulary.length}`;
+
+            // Reset card to front face
+            cardContainer.classList.remove('is-flipped');
+        }
+
+        // Function to flip card
+        function flipCard() {
+            cardContainer.classList.toggle('is-flipped');
+        }
+
+        // Show next card
+        function nextCard() {
+            const nextIndex = (currentCardIndex + 1) % shuffledVocabulary.length;
+            loadCard(nextIndex);
+        }
+
+        // Show previous card
+        function prevCard() {
+            const prevIndex = (currentCardIndex - 1 + shuffledVocabulary.length) % shuffledVocabulary.length;
+            loadCard(prevIndex);
+        }
+
+        // Shuffle cards (Fisher-Yates algorithm)
+        function shuffleCards() {
+            let m = shuffledVocabulary.length, t, i;
+            while (m) {
+                i = Math.floor(Math.random() * m--);
+                t = shuffledVocabulary[m];
+                shuffledVocabulary[m] = shuffledVocabulary[i];
+                shuffledVocabulary[i] = t;
+            }
+            loadCard(0);
+        }
+
+        // Event Listeners
+        cardContainer.addEventListener('click', flipCard);
+        nextBtn.addEventListener('click', nextCard);
+        prevBtn.addEventListener('click', prevCard);
+        shuffleBtn.addEventListener('click', shuffleCards);
+
+        // On page load, shuffle and display the first card
+        shuffleCards();
+        loadCard(0);
+    </script>
+</body>
+</html>
